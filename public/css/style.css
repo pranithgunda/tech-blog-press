@@ -72,3 +72,18 @@ nav a {
     background-color: var(--primary);
     color:var(--dark)
 }
+
+.btn{
+    margin:3px;
+    background-color: var(--dark);
+    color:var(--primary);
+}
+
+.btn:hover{
+    background-color:var(--light-dark)
+}
+
+.form-link{
+    color:#0000ff;
+    text-decoration: underline;
+}
