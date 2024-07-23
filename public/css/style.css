@@ -138,4 +138,7 @@ nav a {
     left:50%;
 }
 
+.bg-dark{
+background-color: var(--dark);
+}
 

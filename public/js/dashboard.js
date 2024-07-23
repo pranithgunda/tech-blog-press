@@ -11,6 +11,7 @@ dashboardPostsEl.addEventListener('click', (event) => {
         if (targetButtonId) {
             const cardEl = document.querySelector(`[data-cardid="${targetButtonId}"]`);
             if (cardEl) {
+                targetEl.className = '';
                 targetEl.classList.add('hidden');
                 cardEl.classList.remove('hidden');
             }
