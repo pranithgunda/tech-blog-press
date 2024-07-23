@@ -10,27 +10,27 @@ User.hasOne(Blog,{
     foreignKey:'user_id'
 });
 
-// Blog belongs to User
+//Blog belongs to User
 Blog.belongsTo(User,{
     foreignKey:'user_id'
 });
 
-// Blog has many feedbacks associated with it
+// // Blog has many feedbacks associated with it
 Blog.hasMany(Feedback,{
-    foreignKey:'blog_id',
+    foreignKey:'blog_id'
 });
 
-// Feedback belongs to blog
+// // Feedback belongs to blog
 Feedback.belongsTo(Blog,{
-    foreignKey:'blog_id',
+    foreignKey:'blog_id'
 });
 
-// User can provide mutliple feedback
+// // User can provide mutliple feedback
 User.hasMany(Feedback,{
-    foreignKey:'user_id',
+    foreignKey:'user_id'
 });
 
-// Feedback belongs to user
+// // Feedback belongs to user
 Feedback.belongsTo(User,{
     foreignKey:'user_id'
 });
