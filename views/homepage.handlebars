@@ -3,7 +3,10 @@
 
 <div class="w-80 mx-auto">
     <div class="card" data-blogid={{blog.id}}>
-        <div class="card-header">{{blog.title}}</div>
+        <div class="card-header d-flex justify-content-between align-items-center">
+            {{blog.title}}
+            <span class="badge bg-dark">Posted by {{blog.author}} on {{blog.createddate}}</span>
+        </div>
         <div class="card-body">
             <p class="card-text">{{blog.content}}</p>
         </div>

@@ -2,8 +2,10 @@
 {{!-- #each built in helper to be added --}}
 
 <div id="dashboardPosts">
-    <button id="titleButton" class="btn btn-secondary" data-name="titleButton" data-buttonid={{blog.id}}>Hide
-        Button</button>
+    <button id="titleButton" class="btn btn-secondary d-flex justify-content-between align-items-center"
+        data-name="titleButton" data-buttonid={{blog.id}}>
+        {{blog.title}}
+        <span class="badge bg-dark">{{blog.createddate}}</span></button>
     <div id="card" class="card mt-3 hidden" data-cardid={{blog.id}}>
         <div class="card-header">Edit Post</div>
         <div class="card-body">
@@ -27,6 +29,6 @@
     </div>
 </div>
 <div class="fixed-bottom position-center">
-    <button class="btn-bottom">+ New Post</button>
+    <button class="btn-bottom" id="newPost">+ New Post</button>
 </div>
 <script src="../../public/js/dashboard.js"></script>
