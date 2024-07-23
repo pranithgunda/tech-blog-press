@@ -1,0 +1,32 @@
+{{!-- handlebars to display blog posts on user dashboard --}}
+{{!-- #each built in helper to be added --}}
+
+<div id="dashboardPosts">
+    <button id="titleButton" class="btn btn-secondary" data-name="titleButton" data-buttonid={{blog.id}}>Hide
+        Button</button>
+    <div id="card" class="card mt-3 hidden" data-cardid={{blog.id}}>
+        <div class="card-header">Edit Post</div>
+        <div class="card-body">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" class="form-control" id="title" data-titleid={{blog.id}}>
+            </div>
+            <div class="form-group">
+                <label for="content">Content</label>
+                <input type="text" class="form-control" id="content" data-contentid={{blog.id}}>
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn" data-name="updatePost" data-updatepostid={{blog.id}}>Update
+                    Post</button>
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn" data-name="deletePost" data-deletepostid={{blog.id}}>Delete
+                    Post</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="fixed-bottom position-center">
+    <button class="btn-bottom">+ New Post</button>
+</div>
+<script src="../../public/js/script.js"></script>
