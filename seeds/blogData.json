@@ -1,0 +1,17 @@
+[
+    {
+        "title":"The MVC Framework is cool",
+        "content":"Model View Controller design pattern incorporates separation of concerns",
+        "user_id":1
+    },
+    {
+        "title":"Javascript is front end library",
+        "content":"You can build amazing things using Javascript",
+        "user_id":2
+    },
+    {
+        "title":"React is a front end library too",
+        "content":"React has a VDOM feature, that makes it unique and more responsive",
+        "user_id":3
+    }
+]
