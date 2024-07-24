@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { Blog, User, Feedback } = require('../models');
 
+
 // get blog by id and render handlebar template
 router.get('/:blogid', async (req, res) => {
     try {
@@ -69,4 +70,7 @@ catch(err){
 res.status(500).json(err);
 }
 });
+
+
+
 module.exports = router;
