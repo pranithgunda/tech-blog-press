@@ -69,4 +69,15 @@ router.get('/dashboard', authUser, async (req, res) => {
     }
 });
 
+// get method to render handlebar to create new blog
+router.get('/new',async(req,res)=>{
+    try{
+        res.render('newpost',{logged_in:req.session.logged_in});
+    }
+    catch(err){
+        res.status(500).json(err);
+    }
+})
+
+
 module.exports = router;
