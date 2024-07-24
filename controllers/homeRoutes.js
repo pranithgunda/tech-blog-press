@@ -46,22 +46,22 @@ router.get('/signup', (req, res) => {
 
 // get all blogs for a user
 
-router.get('/dashboard',authUser, async (req, res) => {
+router.get('/dashboard', authUser, async (req, res) => {
     try {
 
         const userBlogData = await Blog.findAll({
             where: {
-                user_id: req.session.user_id
+                user_id: 1
             },
             include: [
                 {
                     model: User,
-                    attributes: ['id','username'],
+                    attributes: ['id', 'username'],
                 }
             ]
         })
         const userBlogs = userBlogData.map((userBlog) => userBlog.get({ plain: true }));
-        res.status(200).json(userBlogs);
+        res.render('dashboard', { userBlogs, logged_in: req.session.logged_in });
     }
     catch (err) {
         console.error(err);
