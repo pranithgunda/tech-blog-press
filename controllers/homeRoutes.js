@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Blog, User, Feedback } = require('../models');
+const authUser = require('../utils/auth');
 
 // get all blogs for homepage
 router.get('/', async (req, res) => {
@@ -45,17 +46,17 @@ router.get('/signup', (req, res) => {
 
 // get all blogs for a user
 
-router.get('/:userid', async (req, res) => {
+router.get('/dashboard',authUser, async (req, res) => {
     try {
 
         const userBlogData = await Blog.findAll({
             where: {
-                user_id: req.params.userid
+                user_id: req.session.user_id
             },
             include: [
                 {
                     model: User,
-                    attributes: ['username'],
+                    attributes: ['id','username'],
                 }
             ]
         })
