@@ -68,8 +68,8 @@ router.post('/feedback', async (req, res) => {
             blog_id: req.body.blog_id,
             user_id: req.session.user_id
         })
-        if(newFeedback){
-            res.status(200).json({message:'Feedback added successfully'});
+        if (newFeedback) {
+            res.status(200).json({ message: 'Feedback added successfully' });
             return;
         }
     }
@@ -77,6 +77,5 @@ router.post('/feedback', async (req, res) => {
         res.status(500).json(err)
     }
 });
-
 
 module.exports = router;

@@ -1,13 +1,19 @@
+<div id="blogs">
 {{#each blogs as |blog|}}
-<div class="w-80 mx-auto">
-    <div class="card" data-blogid={{blog.id}}>
-        <div class="card-header d-flex justify-content-between align-items-center">
-            {{blog.title}}
-            <span class="badge bg-dark">Posted by {{blog.user.username}} on {{format_timestamp blog.createdAt}}</span>
-        </div>
-        <div class="card-body">
-            <p class="card-text">{{blog.content}}</p>
+    <div class="w-80 mx-auto">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center" data-blogid={{blog.id}}>
+                {{blog.title}}
+                <span class="badge bg-dark">Posted by {{blog.user.username}} on {{format_timestamp
+                    blog.createdAt}}</span>
+            </div>
+            <div class="card-body" data-blogid={{blog.id}}>
+                <p class="card-text" data-blogid={{blog.id}}>{{blog.content}}</p>
+            </div>
         </div>
     </div>
-</div>
 {{/each}}
+</div>
+{{#if logged_in}}
+<script src="/js/homepage.js"></script>
+{{/if}}
