@@ -2,22 +2,24 @@
 
 <div class="w-80 mx-auto">
     <div class="card">
-        <div class="card-header">{{blog.title}}</div>
-        <!-- card header must display title -->
+        <div class="card-header d-flex justify-content-between align-items-center">
+            {{blog.title}}
+            <span class="badge bg-dark">Posted by {{blog.user.username}} on {{format_timestamp
+                blog.createdAt}}</span>
+        </div>
         <div class="card-body">
             <p class="card-text">{{blog.content}}</p>
-            <!-- card body must display content -->
         </div>
     </div>
     <div class="card">
         <div class="card-body">
             <form>
                 <div class="form-group">
-                    <label for="feedbackComment" class="font-weight-bold"><strong>Comment</strong></label>
-                    <textarea class="form-control" id="feedbackComment" rows="3"></textarea>
+                    <label for="feedback" class="font-weight-bold"><strong>Comment</strong></label>
+                    <textarea class="form-control" id="feedback" rows="3"></textarea>
                 </div>
                 <div class="form-group">
-                    <button type="button" class="btn" id="feedbackBtn">Submit</button>
+                    <button type="button" class="btn" id="feedbackBtn" data-blogid={{blog.id}}>Submit</button>
                 </div>
             </form>
         </div>

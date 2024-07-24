@@ -1,13 +1,20 @@
 const router = require('express').Router();
-const {Blog}= require('../models');
+const { Blog, User } = require('../models');
 
 // get blog by id and render handlebar template
 router.get('/:blogid', async (req, res) => {
     try {
-        const blogData = await Blog.findByPk(req.params.blogid)
+        const blogData = await Blog.findByPk(req.params.blogid, {
+            include: [
+                {
+                    model: User,
+                    attributes: ['username'],
+                },
+            ],
+        })
         if (blogData) {
             const blog = blogData.get({ plain: true });
-            res.render('feedback', { blog });
+            res.render('feedback', { blog,logged_in:req.session.logged_in });
             return;
         }
         res.status(404).json({ message: 'Blog not found, please provide valid blog id' })
@@ -17,4 +24,4 @@ router.get('/:blogid', async (req, res) => {
     }
 })
 
-module.exports=router;
+module.exports = router;
