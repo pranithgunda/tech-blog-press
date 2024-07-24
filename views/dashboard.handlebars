@@ -1,33 +1,12 @@
 {{!-- handlebars to display blog posts on user dashboard --}}
 
 <div id="dashboardPosts">
-{{#each userBlogs as |userBlog|}}
+    {{#each userBlogs as |userBlog|}}
     <button id="titleButton" class="btn btn-secondary d-flex justify-content-between align-items-center"
         data-name="titleButton" data-blogid={{userBlog.id}}>
         {{userBlog.title}}
         <span class="badge bg-dark">{{format_timestamp userBlog.createdAt}}</span></button>
-    {{!-- <div id="card" class="card mt-3 hidden" data-cardid={{blog.id}}>
-        <div class="card-header">Edit Post</div>
-        <div class="card-body">
-            <div class="form-group">
-                <label for="title">Title</label>
-                <input type="text" class="form-control" id="title" data-titleid={{blog.id}}>
-            </div>
-            <div class="form-group">
-                <label for="content">Content</label>
-                <input type="text" class="form-control" id="content" data-contentid={{blog.id}}>
-            </div>
-            <div class="form-group">
-                <button type="button" class="btn" data-name="updatePost" data-updatepostid={{blog.id}}>Update
-                    Post</button>
-            </div>
-            <div class="form-group">
-                <button type="button" class="btn" data-name="deletePost" data-deletepostid={{blog.id}}>Delete
-                    Post</button>
-            </div>
-        </div>
-    </div> --}}
-{{/each}}
+    {{/each}}
 </div>
 <div class="fixed-bottom position-center">
     <button class="btn-bottom" id="newPost">+ New Post</button>

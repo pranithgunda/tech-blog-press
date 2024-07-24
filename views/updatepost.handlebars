@@ -1,0 +1,19 @@
+<div id="card" class="card mt-3">
+    <div class="card-header">Edit Post</div>
+    <div class="card-body">
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" id="title" value={{blog.title}}>
+        </div>
+        <div class="form-group">
+            <label for="content">Content</label>
+            <textarea class="form-control" id="content" rows="3">{{blog.content}}</textarea>
+        </div>
+        <div class="form-group">
+            <button type="button" class="btn" id="updatePost">Update Post</button>
+        </div>
+        <div class="form-group">
+            <button type="button" class="btn" id="deletePost">Delete Post</button>
+        </div>
+    </div>
+</div>
