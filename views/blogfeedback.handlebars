@@ -1,0 +1,24 @@
+{{!--handlebar to display feedback comment for blog --}}
+
+<div class="w-80 mx-auto">
+    <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            {{feedback.blog.title}}
+            <span class="badge bg-dark">Posted by {{feedback.blog.user.username}} on {{format_timestamp feedback.blog.createdAt}}</span>
+        </div>
+        <div class="card-body">
+            <p class="card-text">{{feedback.blog.content}}</p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <form>
+                <div class="form-group">
+                    <label for="feedback" class="font-weight-bold"><strong>Comment</strong></label>
+                    <textarea class="form-control-plaintext" rows="3">{{feedback.comment}}</textarea>
+                </div>
+                <p>Comment added by {{user_name}} on {{format_timestamp feedback.createdAt}}</p>
+            </form>
+        </div>
+    </div>
+</div>
