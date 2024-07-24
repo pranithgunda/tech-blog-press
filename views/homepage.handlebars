@@ -1,14 +1,13 @@
-{{!-- handlebars to display list of blog posts as cards on homepage --}}
-{{!-- #each built-in helper to be added --}}
-
+{{#each blogs as |blog|}}
 <div class="w-80 mx-auto">
     <div class="card" data-blogid={{blog.id}}>
         <div class="card-header d-flex justify-content-between align-items-center">
             {{blog.title}}
-            <span class="badge bg-dark">Posted by {{blog.author}} on {{blog.createddate}}</span>
+            <span class="badge bg-dark">Posted by {{blog.user.username}} on {{format_timestamp blog.createdAt}}</span>
         </div>
         <div class="card-body">
             <p class="card-text">{{blog.content}}</p>
         </div>
     </div>
 </div>
+{{/each}}

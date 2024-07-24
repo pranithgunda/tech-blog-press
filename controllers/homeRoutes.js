@@ -8,13 +8,34 @@ router.get('/', async (req, res) => {
             include: [
                 {
                     model: User,
-                    attributes: ['username'],
+                    attributes: ['id', 'username'],
                 },
             ],
         });
-        const blogs = blogData.map((blog) =>
-            blog.get({ plain: true }));
-        res.status(200).json(blogs);
+        const blogs = blogData.map((blog) => blog.get({ plain: true }));
+        res.render('homepage', { blogs, logged_in: req.session.logged_in });
+    }
+    catch (err) {
+        console.error(err);
+        res.status(500).json(err);
+    }
+});
+
+// render login page for user
+router.get('/login', (req, res) => {
+    try {
+        res.render('login');
+    }
+    catch (err) {
+        console.error(err);
+        res.status(500).json(err);
+    }
+});
+
+// render signup page for user
+router.get('/signup', (req, res) => {
+    try {
+        res.render('signup');
     }
     catch (err) {
         console.error(err);
@@ -38,7 +59,7 @@ router.get('/:userid', async (req, res) => {
                 }
             ]
         })
-        const userBlogs = userBlogData.map((userBlog)=>userBlog.get({ plain: true }));
+        const userBlogs = userBlogData.map((userBlog) => userBlog.get({ plain: true }));
         res.status(200).json(userBlogs);
     }
     catch (err) {
