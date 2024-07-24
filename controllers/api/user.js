@@ -34,13 +34,32 @@ router.post('/login', async (req, res) => {
 })
 
 // method to logout a user
-router.post('/logout',(req,res)=>{
-    if(req.session.logged_in){
-        req.session.destroy(()=>{
+router.post('/logout', (req, res) => {
+    if (req.session.logged_in) {
+        req.session.destroy(() => {
             res.status(204).end();
         });
-    }else{
+    } else {
         res.status(404).end();
+    }
+});
+
+// method to signup a user
+router.post('/signup', async (req, res) => {
+    try {
+        const newUser = await User.create({
+            username: req.body.username,
+            password: req.body.password
+        });
+        if (newUser) {
+            req.session.user_id=newUser.username;
+            req.session.logged_in=true;
+            res.status(200).json({ user: newUser, message: 'User profile created successfully'})
+            return;
+        }
+    }
+    catch (err) {
+        res.status(400).json(err);
     }
 });
 
