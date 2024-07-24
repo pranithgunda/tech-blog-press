@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Blog, User } = require('../models');
+const { Blog, User, Feedback } = require('../models');
 
 // get blog by id and render handlebar template
 router.get('/:blogid', async (req, res) => {
@@ -24,4 +24,32 @@ router.get('/:blogid', async (req, res) => {
     }
 })
 
+// get feedback entered for blog and display blog info
+router.get('/feedback/:blogid',async (req,res)=>{
+try{
+    const blogFeedback = await Feedback.findOne({
+        where:{
+            blog_id:req.params.blogid
+        },
+        order:[['createdAt','DESC']],
+        include:[{
+            model:Blog,
+            attributes:['title','content','createdAt'],
+            include:[{
+                model:User,
+                attributes:['username']
+            }]
+        },
+        ]
+    })
+    if(blogFeedback){
+        const feedback = blogFeedback.get({plain:true});
+        res.render('blogfeedback',{feedback,logged_in:req.session.logged_in,user_name:req.session.user_name})
+    }
+}
+catch(err){
+    console.log(err);
+    res.status(500).json(err);
+}
+})
 module.exports = router;
