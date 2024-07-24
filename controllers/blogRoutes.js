@@ -14,7 +14,7 @@ router.get('/:blogid', async (req, res) => {
         })
         if (blogData) {
             const blog = blogData.get({ plain: true });
-            res.render('feedback', { blog,logged_in:req.session.logged_in });
+            res.render('providefeedback', { blog,logged_in:req.session.logged_in });
             return;
         }
         res.status(404).json({ message: 'Blog not found, please provide valid blog id' })
@@ -44,7 +44,7 @@ try{
     })
     if(blogFeedback){
         const feedback = blogFeedback.get({plain:true});
-        res.render('blogfeedback',{feedback,logged_in:req.session.logged_in,user_name:req.session.user_name})
+        res.render('viewfeedback',{feedback,logged_in:req.session.logged_in,user_name:req.session.user_name})
     }
 }
 catch(err){
