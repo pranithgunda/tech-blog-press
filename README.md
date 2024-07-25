@@ -26,4 +26,4 @@ Application incorporates MVC (Model View Controller) design pattern and uses Seq
 
 ## Link To Deployed Site
 
-TBD
+https://tech-blog-press.onrender.com/
