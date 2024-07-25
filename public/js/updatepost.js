@@ -3,7 +3,7 @@ const titleEl = document.getElementById('title');
 const contentEl = document.getElementById('content');
 const originLocation = window.origin;
 
-// delegate event listener to handle update and delete
+// delegate event listener to handle update and delete blogs
 blogPostEl.addEventListener('click', async (event) => {
     const targetEl = event.target;
     const targetButtonType = targetEl.textContent;

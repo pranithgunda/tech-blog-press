@@ -1,3 +1,4 @@
+// home and dashboard related render routes
 const router = require('express').Router();
 const { Blog, User, Feedback } = require('../models');
 const authUser = require('../utils/auth');
@@ -70,11 +71,11 @@ router.get('/dashboard', authUser, async (req, res) => {
 });
 
 // get method to render handlebar to create new blog
-router.get('/new',async(req,res)=>{
-    try{
-        res.render('newpost',{logged_in:req.session.logged_in,user_id:req.session.user_id});
+router.get('/new', async (req, res) => {
+    try {
+        res.render('newpost', { logged_in: req.session.logged_in, user_id: req.session.user_id });
     }
-    catch(err){
+    catch (err) {
         res.status(500).json(err);
     }
 })

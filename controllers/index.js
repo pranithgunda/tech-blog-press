@@ -6,9 +6,9 @@ const blogRoutes = require('./blogRoutes');
 const userRoutes = require('./userRoutes');
 
 
-router.use('/',homeRoutes);
-router.use('/blog',blogRoutes);
-router.use('/user',userRoutes);
-router.use('/api',apiRoutes);
+router.use('/', homeRoutes);
+router.use('/blog', blogRoutes);
+router.use('/user', userRoutes);
+router.use('/api', apiRoutes);
 
 module.exports = router;

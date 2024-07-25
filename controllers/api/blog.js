@@ -1,3 +1,4 @@
+// api routes defined for blog
 const router = require('express').Router();
 const { Blog, Feedback } = require('../../models');
 

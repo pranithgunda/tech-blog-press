@@ -14,8 +14,8 @@ dashboardPostsEl.addEventListener('click', (event) => {
 
 // event listener to handle creation of new posts
 newPostEl.addEventListener('click', (event) => {
-        // replace location for browser to render newpost handlebars
-        document.location.replace(`${originLocation}/new`);
+    // replace location for browser to render newpost handlebars
+    document.location.replace(`${originLocation}/new`);
 })
 
 
