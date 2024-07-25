@@ -19,16 +19,18 @@ router.post('/login', async (req, res) => {
             res.status(400).json({ message: 'Incorrect email or password, please try again' });
             return;
         }
-
+        // retrieve only data values of instance excluding metadata
+        const user = userData.get({ plain: true });
         // save user information on session object
         req.session.save(() => {
-            req.session.user_id = userData.id;
+            req.session.user_id = user.id;
             req.session.logged_in = true;
-            req.session.user_name=userData.username;
-            res.status(200).json({ user: userData, message: 'You are now logged in' });
+            req.session.user_name = user.username;
+            res.status(200).json({ user: user, message: 'You are now logged in' });
         })
     }
     catch (err) {
+        console.log(err);
         res.status(400).json(err);
     }
 })
@@ -42,11 +44,16 @@ router.post('/signup', async (req, res) => {
             password: req.body.password
         });
         if (newUser) {
-            req.session.user_id=newUser.id;
-            req.session.logged_in=true;
-            req.session.user_name=userData.username;
-            res.status(200).json({ user: newUser, message: 'User profile created successfully'})
-            return;
+            // retrieve only data values of instance and exclude metadata
+            const user = newUser.get({ plain: true });
+            // save user information on session object
+            req.session.save(() => {
+                req.session.user_id = user.id;
+                req.session.logged_in = true;
+                req.session.user_name = user.username;
+                res.status(200).json({ user: user, message: 'User profile created successfully' })
+                return;
+            })
         }
     }
     catch (err) {

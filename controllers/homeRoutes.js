@@ -51,7 +51,7 @@ router.get('/dashboard', authUser, async (req, res) => {
 
         const userBlogData = await Blog.findAll({
             where: {
-                user_id: 1
+                user_id: req.session.user_id
             },
             include: [
                 {
@@ -72,7 +72,7 @@ router.get('/dashboard', authUser, async (req, res) => {
 // get method to render handlebar to create new blog
 router.get('/new',async(req,res)=>{
     try{
-        res.render('newpost',{logged_in:req.session.logged_in});
+        res.render('newpost',{logged_in:req.session.logged_in,user_id:req.session.user_id});
     }
     catch(err){
         res.status(500).json(err);
