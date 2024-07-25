@@ -14,10 +14,9 @@
         <div class="card-body">
             <form>
                 <div class="form-group">
-                    <label for="feedback" class="font-weight-bold"><strong>Comment</strong></label>
                     <textarea class="form-control-plaintext" rows="3">{{feedback.comment}}</textarea>
                 </div>
-                <p>Comment added by {{user_name}} on {{format_timestamp feedback.createdAt}}</p>
+                <p>---{{user_name}} on {{format_timestamp feedback.createdAt}}</p>
             </form>
         </div>
     </div>

@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const {Op} = require('sequelize');
 const { Blog, User, Feedback } = require('../models');
 
 
@@ -25,12 +26,15 @@ router.get('/:blogid', async (req, res) => {
     }
 });
 
-// get feedback entered for blog and display blog info
+// get feedback provided for blog by the user and render the blog along with comment and user info
 router.get('/feedback/:blogid',async (req,res)=>{
 try{
     const blogFeedback = await Feedback.findOne({
         where:{
-            blog_id:req.params.blogid
+            [Op.and]:[
+                {blog_id:req.params.blogid},
+                {user_id:req.session.user_id}
+            ]
         },
         order:[['createdAt','DESC']],
         include:[{
@@ -61,7 +65,7 @@ try{
 const blogData = await Blog.findByPk(req.params.blogid)
 if(blogData){
     const blog = blogData.get({plain:true});
-    res.render('updatepost',{blog,logged_in:req.session.logged_in})
+    res.render('updatepost',{blog,logged_in:req.session.logged_in,user_id:req.session.user_id})
     return;
 }
 res.status(404).json({message:'Blog not found, please provide valid blog id'});
