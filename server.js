@@ -15,11 +15,15 @@ const PORT = process.env.PORT || 3001;
 
 const sess = {
     secret: process.env.SESSIONSECRET,
-    cookie: {},
+    cookie: {
+        maxAge:15 * 60 * 1000,
+    },
     resave: false,
     saveUninitialized: true,
     store: new SequelizeStore({
-        db: sequelize
+        db: sequelize,
+        // setting session expiration time to 15mins and logs out user for 15 mins of inactivity
+        expiration:15*60*1000
     })
 };
 
